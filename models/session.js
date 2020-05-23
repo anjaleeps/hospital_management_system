@@ -10,7 +10,7 @@ Session.prototype.findAllByDoctor = async function (doctorId) {
                 count(*) as patient_count, s.start_time, \
                 to_char(s.start_time, 'HH:MI') as start_time, to_char(s.end_time, 'HH:MI') as end_time \
                 from appointment a inner join session s on a.session_id=s.session_id \
-                group by s.session_id, a.date \
+                group by s.session_id, a.date, s.doctor_id \
                 having s.doctor_id=$1 and a.date >= CURRENT_DATE order by a.date"
 
     try {
