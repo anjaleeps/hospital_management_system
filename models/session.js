@@ -6,8 +6,8 @@ function Session() {
 
 Session.prototype.findAllByDoctor = async function (doctorId) {
 
-    let query = "select distinct on (ss.session_id) ss.session_id, ss.doctor_id, day, date, patient_count, \
-                to_char(s.start_time, 'HH:MI') as start_time, to_char(s.end_time, 'HH:MI') as end_time from\
+    let query = "select distinct on (date) ss.session_id, ss.doctor_id, day, date, patient_count, \
+                to_char(se.start_time, 'HH:MI') as start_time, to_char(se.end_time, 'HH:MI') as end_time from\
                 (select s.doctor_id, s.session_id, TO_CHAR(a.date, 'YYYY-MM-DD') as date, \
                 count(*) as patient_count \
                 from appointment a inner join session s on a.session_id=s.session_id \
