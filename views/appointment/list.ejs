@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>Dashio - Bootstrap Admin Template</title>
+
+    <!-- Favicons -->
+    <link href="/img/favicon.png" rel="icon">
+    <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/to-do.css">
+
+</head>
+
+<body>
+
+    <%- include ('../partials/header') %>
+    <%- include ('../partials/sidebar') %>
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row mt mb">
+                <div class="col-lg-12">
+                    <div class="row content-panel" style="font-size:13px;">
+                        <div class="col-md-6 profile-text mt mb centered">
+                            <div class="right-divider hidden-sm hidden-xs">
+                                <h4><%=session.day.toUpperCase() %>, <%= session.date %></h4>
+                                <h6>DATE</h6>
+                                <h4><%= session.start_time %> - <%= session.end_time%></h4>
+                                <h6>DURATION</h6>
+                                <h4><%= appointments.length %></h4>
+                                <h6>TOTAL PATIENTS</h6>
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5 profile-text mt" style>
+                            <h3><%= session.doctor_name %></h3>
+                            <h6><%= session.doctor_type %></h6>
+                            <p>Session Id: #<%=session.session_id %></p>
+                            <p>Time Per Patient: <%=session.time_per_patient %> mins</p>
+                            <br>
+                            </p>
+                        </div>
+
+                    </div>
+                    <!-- /row -->
+                </div>
+                <div class="col-sm-12 mt">
+                    <section class="panel">
+                        <header class="panel-heading wht-bg">
+                            <h4 class="gen-case">
+                                List of Patients
+                            </h4>
+                        </header>
+                        <div class="panel-body minimal">
+
+                            <div class="table-inbox-wrap ">
+                                <table class="table table-inbox table-hover">
+                                    <tbody>
+                                        <tr class="unread">
+                                            <td class="inbox-small-cells">PATIENT NUMBER</td>
+                                            <td class="inbox-small-cells"></td>
+                                            <td class="inbox-small-cells"></td>
+                                            <td class="view-message  dont-show">PATIENT NAME</td>
+                                            <td class="view-message  inbox-small-cells">SCHEDULED TIME</td>
+                                            <td class="view-message ">STATUS</td>
+                                            <td class="view-message "></td>
+                                            <td class="view-message">APPOINTMENT ID</td>
+                                        </tr>
+                                        <% appointments.forEach(appointment => { %>
+                                        <tr class="read">
+                                            <td class="inbox-small-cells"><%= appointment.patient_number %></td>
+                                            <td class="inbox-small-cells"></td>
+                                            <td class="inbox-small-cells"></td>
+                                            <td class="view-message  dont-show">
+                                                <a href=<%= `appointment/${appointment.appointment_id}` %>>
+                                                    <%= appointment.patient_name %>
+                                                </a>
+                                            </td>
+                                            <td class="view-message  inbox-small-cells"><%= appointment.scheduled_time%>
+                                            </td>
+                                            <td class="view-message ">
+                                                <% if (appointment.status.toLowerCase() =='created') { %>
+                                                <span class="badge bg-theme"><%= appointment.status %></span>
+                                                <% } else if (appointment.status.toLowerCase() =='completed'){ %>
+                                                <span class="badge bg-warning"><%= appointment.status %></span>
+                                                <% } else  if (appointment.status.toLowerCase() =='missed'){%>
+                                                <span class="badge bg-important"><%= appointment.status %></span>
+                                                <% } %>
+                                            </td>
+                                            <td class="view-message "></td>
+                                            <td class="view-message"><%=appointment.appointment_id%></td>
+                                        </tr>
+                                        <% }) %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+            </div>
+        </section>
+        <%- include ('../partials/footer') %>
+</body>
+
+</html>
