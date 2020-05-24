@@ -10,16 +10,16 @@
   <title>Dashio - Bootstrap Admin Template</title>
 
   <!-- Favicons -->
-  <link href="/img/favicon.png" rel="icon">
-  <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/doctor/img/favicon.png" rel="icon">
+  <link href="/doctor/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
-  <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/doctor/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
-  <link href="/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="/doctor/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
   <!-- Custom styles for this template -->
-  <link href="/css/style.css" rel="stylesheet">
-  <link href="/css/style-responsive.css" rel="stylesheet">
+  <link href="/doctor/css/style.css" rel="stylesheet">
+  <link href="/doctor/css/style-responsive.css" rel="stylesheet">
 
   <!-- <link rel="stylesheet" href="css/to-do.css"> -->
 
@@ -69,9 +69,9 @@
             </div>
             <div class="col-md-4 centered">
               <div class="profile-pic">
-                <p><img src="/img/ui-sam.jpg" class="img-circle"></p>
+                <p><img src="/doctor/img/ui-sam.jpg" class="img-circle"></p>
                 <p>
-                  <a href=<%=`/appointment/${appointment.appointment_id}/diagnosis/new`%> class="btn btn-theme">Add Diagnosis</a>
+                  <a href=<%=`/doctor/appointment/${appointment.appointment_id}/diagnosis/new`%> class="btn btn-theme">Add Diagnosis</a>
                   <a class="btn btn-theme02">Recommend Test</a>
                 </p>
               </div>
@@ -103,7 +103,7 @@
                       <div class="detailed mt">
                         <div class="recent-activity">
                           <% diagnoses.forEach(diagnosis => { %>
-                          <a href=<%= `/appointment/${appointment.appointment_id}/diagnosis/${diagnosis.diagnosis_id}` %>>
+                          <a href=<%= `/doctor/appointment/${appointment.appointment_id}/diagnosis/${diagnosis.diagnosis_id}` %>>
                             <div class="activity-panel">
                               <div>
                                 <h5><%= diagnosis.diagnosis_type.toUpperCase() %></h5>
