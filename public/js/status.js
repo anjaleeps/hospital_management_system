@@ -22,7 +22,8 @@ async function changeStatus(e) {
                 window.location.reload(true)
             }
             else{
-                let error = await response.json()
+                let errors = await response.json()
+                showErrors(errors.errors)
                 console.log(error)
             }
         }
@@ -31,6 +32,19 @@ async function changeStatus(e) {
         }
        
     }
+}
+
+
+function showErrors(errors){
+    let keys = []
+    errors.forEach(errorObj => {
+        for (let [key, value] of Object.entries(errorObj)){
+            if (!(keys.includes(key))){
+                alert(value)
+                return
+            }           
+        }
+    })
 }
 
 async function postStatus(appointmentId, appointment){
