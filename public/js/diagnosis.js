@@ -1,6 +1,6 @@
 let addButton = document.querySelector('#addButton')
 let selectedDrugs = document.querySelector('#selectedDrugs')
-let drugSelector = document.querySelector("#cprescription")
+let drugSelector = document.querySelector("#cdrugs")
 let submitButton = document.querySelector('#submitButton')
 let temp = document.querySelector('#temp')
 addButton.addEventListener('click', addDrug)
@@ -38,7 +38,7 @@ function close(e) {
 
 async function createNewAppointment(e) {
     e.preventDefault()
-    let diagnosis = document.querySelector('#cdiagnosis').value
+    let diagnosis = document.querySelector('#cdiagnosistypeid').value
     if (diagnosis) {
         let appointmentId = document.querySelector('#appointmentId').value
         console.log(appointmentId)
@@ -55,8 +55,8 @@ async function createNewAppointment(e) {
                 window.location.pathname = `/doctor/appointment/${appointmentId}`
             }
             else{
-                let error = await response.json()
-                console.log(error)
+                let errors = await response.json()
+                showErrors(errors.errors)
             }
         }
         catch (err) {
@@ -64,6 +64,34 @@ async function createNewAppointment(e) {
         }
 
     }
+}
+
+
+function showErrors(errors){
+    let keys = []
+    errors.forEach(errorObj => {
+        for (let [key, value] of Object.entries(errorObj)){
+            if (!(keys.includes(key))){
+                if (key == 'appointmentId'){
+                    alert(value)
+                    return
+                }
+                let id = '#c'+key.toLowerCase()
+                let element = document.querySelector(id)
+                let notif = document.createElement('p')
+                let text = document.createTextNode(value)
+                notif.appendChild(text)
+                notif.classList.add('help-block')
+                notif.style.color='red'
+                let next = element.parentNode.getElementsByTagName('p')[0]
+                if (next){
+                    next.parentNode.removeChild(next)
+                }
+                element.parentNode.appendChild(notif)
+                keys.push(key)
+            }           
+        }
+    })
 }
 
 async function postDiagnosis(diagnosisData, appointmentId) {

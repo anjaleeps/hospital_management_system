@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="cdiagnosis" class="control-label col-lg-2">Diagnosis Name</label>
+                                    <label for="cdiagnosistypeid" class="control-label col-lg-2">Diagnosis Name</label>
                                     <div class="col-lg-10">
                                         <select class="form-control" id="cdiagnosis">
                                             <% diagnosisTypes.forEach(type => { %>
@@ -57,7 +57,7 @@
 
                                 <div class="form-group">
 
-                                    <label for="cprescription" class="control-label col-lg-2">Drug Names</label>
+                                    <label for="cdrugs" class="control-label col-lg-2">Drug Names</label>
 
                                     <div class="col-lg-8">
                                         <select class="form-control" id="cprescription">
@@ -94,7 +94,7 @@
                                 <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-10">
                                         <button id="submitButton" class="btn btn-theme" type="submit">Save</button>
-                                        <a href=<%= `/appointment/${appointmentId}` %> class="btn btn-theme04" >Cancel</a>
+                                        <a href=<%= `/doctor/appointment/${appointmentId}` %> class="btn btn-theme04" >Cancel</a>
                                     </div>
                                 </div>
                                 <input type="hidden" id="appointmentId" value=<%= `${appointmentId}` %>
