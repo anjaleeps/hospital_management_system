@@ -35,7 +35,7 @@ async function changeStatus(e) {
 
 async function postStatus(appointmentId, appointment){
     try{
-        let response = await fetch(`/appointment/${appointmentId}/status`, {
+        let response = await fetch(`/doctor/appointment/${appointmentId}/status`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

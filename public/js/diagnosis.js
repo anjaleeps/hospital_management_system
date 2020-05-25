@@ -52,7 +52,7 @@ async function createNewAppointment(e) {
         try {
             let response = await postDiagnosis(diagnosisData, appointmentId)
             if(response.ok){
-                window.location.pathname = `/appointment/${appointmentId}`
+                window.location.pathname = `/doctor/appointment/${appointmentId}`
             }
             else{
                 let error = await response.json()
@@ -68,7 +68,7 @@ async function createNewAppointment(e) {
 
 async function postDiagnosis(diagnosisData, appointmentId) {
     try {
-        let response = await fetch(`/appointment/${appointmentId}/diagnosis`, {
+        let response = await fetch(`/doctor/appointment/${appointmentId}/diagnosis`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
