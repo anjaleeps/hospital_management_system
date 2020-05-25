@@ -46,7 +46,7 @@
                                 <div class="form-group">
                                     <label for="cdiagnosistypeid" class="control-label col-lg-2">Diagnosis Name</label>
                                     <div class="col-lg-10">
-                                        <select class="form-control" id="cdiagnosis">
+                                        <select class="form-control" id="cdiagnosistypeid">
                                             <% diagnosisTypes.forEach(type => { %>
                                             <option value=<%= `${type.diagnosis_type_id}` %>><%= type.diagnosis_type%>
                                             </option>
@@ -60,7 +60,7 @@
                                     <label for="cdrugs" class="control-label col-lg-2">Drug Names</label>
 
                                     <div class="col-lg-8">
-                                        <select class="form-control" id="cprescription">
+                                        <select class="form-control" id="cdrugs">
                                             <% drugs.forEach(drug => { %>
                                             <option value=<%= `${drug.drug_id}` %>><%= drug.drug_name %></option>
                                             <% }) %>
