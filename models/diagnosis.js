@@ -39,7 +39,7 @@ Diagnosis.prototype.create = async function (diagnosis) {
 }
 
 Diagnosis.prototype.findOneById = async function (diagnosisId) {
-    let query = "select d.diagnosis_id, a.appointment_id, d.special_note, a.patient_id \
+    let query = "select d.diagnosis_id, a.appointment_id, d.special_note, a.patient_id, \
                 dit.diagnosis_type, TO_CHAR(a.date, 'YYYY-MM-DD') as date, \
                 INITCAP(dc.first_name || ' ' || dc.last_name) as doctor_name, dt.doctor_type, \
                 INITCAP(p.first_name || ' ' || p.last_name) as patient_name from diagnosis d \
