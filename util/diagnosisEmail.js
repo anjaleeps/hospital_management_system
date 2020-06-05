@@ -9,6 +9,13 @@ const email = new Email({
     transport: transporter.getTransporter(),
     preview: false,
     send: true,
+    juice: true, 
+    juiceResources: {
+        preserveImportant: true,
+        webResources: {
+            relativeTo: path.join(__dirname, '..', 'public')
+        }
+    },
     views: {
         options: {
             extension: 'ejs'
