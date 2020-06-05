@@ -24,7 +24,6 @@ async function changeStatus(e) {
             else{
                 let errors = await response.json()
                 showErrors(errors.errors)
-                console.log(error)
             }
         }
         catch(err){
@@ -41,6 +40,7 @@ function showErrors(errors){
         for (let [key, value] of Object.entries(errorObj)){
             if (!(keys.includes(key))){
                 alert(value)
+                keys.push(key)
                 return
             }           
         }

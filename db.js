@@ -5,12 +5,14 @@ const cn = {
     port: process.env.DB_PORT,
     database: process.env.DB_NAME,
     user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    ssl: {rejectUnauthorized: false}
+    password: process.env.DB_PASS
+    // ssl: {rejectUnauthorized: false} //change this in production
 };
 
 const db = pgp(cn);
  
 module.exports = db
+
+
  
 

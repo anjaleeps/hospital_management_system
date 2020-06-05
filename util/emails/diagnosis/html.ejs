@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>New diagnosis report</title>
+
+    <!-- Favicons -->
+    <link href="/doctor/img/favicon.png" rel="icon">
+    <link href="/doctor/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/doctor/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="/doctor/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="/doctor/css/style.css" rel="stylesheet">
+    <link href="/doctor/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="/doctor/css/to-do.css">
+
+</head>
+
+<body>
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <h4><i class="fa fa-angle-right"></i> Diagnosis Report</h4>
+                    <div class="form-panel">
+                        <div class=" form">
+                            <form class="cmxform form-horizontal style-form" id="commentForm">
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-sm-2 control-label">Patient Name</label>
+                                    <div class="col-lg-10">
+                                        <p class="form-control-static"><%= diagnosis.patient_name %></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-sm-2 control-label">Diagnosis Name</label>
+                                    <div class="col-lg-10">
+                                        <p class="form-control-static"><%= diagnosis.diagnosis_type %></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-sm-2 control-label">Date</label>
+                                    <div class="col-lg-10">
+                                        <p class="form-control-static"><%= diagnosis.date %></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-sm-2 control-label">Doctor</label>
+                                    <div class="col-lg-10">
+                                        <p class="form-control-static"><%= diagnosis.doctor_name %> -
+                                            <%= diagnosis.doctor_type %></p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-sm-2 control-label">Appointment ID</label>
+                                    <div class="col-lg-10">
+                                        <p class="form-control-static"><%= diagnosis.appointment_id %></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-sm-2 control-label">Prescribed Drugs</label>
+                                    <div class="col-lg-10">
+                                        <div class="row">
+                                            <% prescription.forEach(drug=> { %>
+                                            <div class="col-md-3">
+                                                <div class="alert alert-warning alert-dismissable"
+                                                    style="padding: 5px;">
+                                                    <strong><%= drug.drug_name %></strong>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-sm-2 control-label">Doctor's Note</label>
+                                    <div class="col-lg-10">
+                                        <p class="form-control-static"><%= diagnosis.special_note %></p>
+                                    </div>
+                                </div>
+
+                               
+
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /form-panel -->
+                </div>
+                <!-- /col-lg-12 -->
+            </div>
+        </section>
+
+
+</body>
+
+</html>

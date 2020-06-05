@@ -21,5 +21,13 @@ db.any("SELECT * FROM role")
 
 routes(app)
 
+// const sendMail = require('./utll/emailTransporter')
+// let diagnosisEmail = require('./util/diagnosisEmail')
+// mailOptions.to = "anjaleeps.17@cse.mrt.ac.lk"
+// diagnosisEmail.sendEmail()
+
+// sendMail(mailOptions).catch(err=> {console.log(err)})
+
 app.listen(process.env.PORT || 3000, () => console.log('hello'))
+
 

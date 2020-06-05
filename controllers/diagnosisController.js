@@ -4,6 +4,7 @@ const Prescription = require('../models/prescription')
 const Patient = require('../models/patient')
 const Appointment = require('../models/appointment')
 const Drug = require('../models/drug')
+const diagnosisEmail = require('../util/diagnosisEmail')
 
 exports.sendForm = async function(req, res){
     let appointmentId = req.body.appointmentId
@@ -42,6 +43,7 @@ exports.createNewDiagnosis = async function(req, res){
                 await prescription.create(diagnosisId, drug)
             })
             res.sendStatus(200)
+            diagnosisEmail.sendEmail(diagnosisId)
         }
         else{
             res.render('error/404')

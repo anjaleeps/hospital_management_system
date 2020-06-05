@@ -10,6 +10,6 @@ module.exports = function (app) {
     }, diagnosis)
     app.use('/appointment', appointment)
     app.use('/patient', patient)
-    app.use('/', session)
+    app.use('/', session) //change this in production
 } 
 

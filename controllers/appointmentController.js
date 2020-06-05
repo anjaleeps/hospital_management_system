@@ -36,21 +36,21 @@ exports.getPatientAppointment = async function (req, res) {
     try {
         let appointmentData = await appointment.findOneById(appointmentId)
 
-        if (appointmentData.status.toLowerCase() == "created") {
-            let date = new Date(appointmentData.date)
-            let now = new Date()
-            let year = now.getFullYear()
-            let month = now.getMonth()
-            let d = now.getDate()
-            let today = new Date(year, month, d)
-           
-            if (today>date) {
-                await appointment.updateStatusAuto(appointmentId)
-                appointmentData.status='missed'
+        if (appointmentData) {
+            if (appointmentData.status.toLowerCase() == "created") {
+                let date = new Date(appointmentData.date)
+                let now = new Date()
+                let year = now.getFullYear()
+                let month = now.getMonth()
+                let d = now.getDate()
+                let today = new Date(year, month, d)
+            
+                if (today>date) {
+                    await appointment.updateStatusAuto(appointmentId)
+                    appointmentData.status='missed'
+                }
             }
-        }
 
-        if (appointmentId) {
             let patientId = appointmentData.patient_id
             let patientData = await patient.findOneById(patientId)
             let diagnosisData = await diagnosis.findAllByPatient(patientId)
