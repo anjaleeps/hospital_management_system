@@ -13,9 +13,9 @@ async function login(e) {
     if (email && password) {
         let response = await postLogin(email, password)
         if (response.ok) {
-            // window.location.pathname = "/doctor/"
             let result = await response.json()
             console.log(result)
+            window.location.pathname = "/doctor/"
         }
         else {
             let errors = await response.json()
@@ -26,7 +26,7 @@ async function login(e) {
 
 async function postLogin(email, password) {
     try {
-        let response = await fetch(`/login`, { //change in production
+        let response = await fetch(`/doctor/login`, { //change in production
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
