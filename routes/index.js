@@ -11,7 +11,7 @@ module.exports = function (app) {
         function (req, res, next) {
             req.body.appointmentId = req.params.appointmentId
             next()
-        }, diagnosis)
+        }, authorization.ownsAppointment, diagnosis)
     app.use('/appointment', authorization.isLoggedIn, appointment)
     app.use('/patient', authorization.isLoggedIn, patient)
     app.use('/login', user)

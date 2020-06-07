@@ -15,7 +15,7 @@ exports.getSessionAppointments = async function (req, res) {
             sessionData.date = date
             let appointmentData = await appointment.findAllBySession(sessionId, date)
 
-            res.render('appointment/list', { session: sessionData, appointments: appointmentData })
+            res.render('appointment/list', { user: req.user, session: sessionData, appointments: appointmentData })
         }
         else {
             res.render('error/404')
@@ -44,10 +44,10 @@ exports.getPatientAppointment = async function (req, res) {
                 let month = now.getMonth()
                 let d = now.getDate()
                 let today = new Date(year, month, d)
-            
-                if (today>date) {
+
+                if (today > date) {
                     await appointment.updateStatusAuto(appointmentId)
-                    appointmentData.status='missed'
+                    appointmentData.status = 'missed'
                 }
             }
 
@@ -56,6 +56,7 @@ exports.getPatientAppointment = async function (req, res) {
             let diagnosisData = await diagnosis.findAllByPatient(patientId)
 
             res.render('appointment/show', {
+                user: req.user,
                 appointment: appointmentData,
                 patient: patientData,
                 diagnoses: diagnosisData
@@ -85,14 +86,14 @@ exports.changeStatus = async function (req, res) {
     }
 }
 
-exports.getPatientHistory = async function(req, res){
-    let doctorId = 1
-    let patient= new Patient()
-    try{
+exports.getPatientHistory = async function (req, res) {
+    let doctorId = req.user.id
+    let patient = new Patient()
+    try {
         let patientData = await patient.findAllByDoctor(doctorId)
-        res.render('patient/list', {patients: patientData})
+        res.render('patient/list', { user: req.user, patients: patientData })
     }
-    catch(err){
+    catch (err) {
         console.log(err)
         res.render('error/500')
     }

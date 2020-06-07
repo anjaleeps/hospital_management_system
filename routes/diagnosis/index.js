@@ -1,4 +1,5 @@
 const diagnosisController = require('../../controllers/diagnosisController')
+const authorization = require('../../middleware/authorization/userAuthorization')
 const {reqFormatter, diagnosisValidationRules, validate} = require('../../middleware/validation/diagnosisValidation')
 const express = require('express')
 const router = express.Router(mergeParams=true)

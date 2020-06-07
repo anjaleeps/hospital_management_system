@@ -16,6 +16,7 @@ exports.sendForm = async function(req, res){
         let drugData = await drug.findAll()
         let diagnosisTypeData = await diagnosisType.findAll()
         res.render('diagnosis/new', {
+            user: req.user,
             appointmentId:appointmentId, 
             drugs: drugData,
             diagnosisTypes: diagnosisTypeData
@@ -65,6 +66,7 @@ exports.showDiagnosis = async function(req, res){
         let diagnosisData = await diagnosis.findOneById(diagnosisId)
         let prescriptionData = await prescription.findAllByDiagnosis(diagnosisId)
         res.render('diagnosis/show', {
+            user: req.user,
             appointmentId: appointmentId,
             diagnosis: diagnosisData,
             prescription: prescriptionData
