@@ -51,6 +51,7 @@ async function postStatus(appointmentId, appointment){
     try{
         let response = await fetch(`/doctor/appointment/${appointmentId}/status`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },

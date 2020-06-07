@@ -98,6 +98,7 @@ async function postDiagnosis(diagnosisData, appointmentId) {
     try {
         let response = await fetch(`/doctor/appointment/${appointmentId}/diagnosis`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },

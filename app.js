@@ -1,13 +1,16 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 require('dotenv').config()
-   
+
 const db = require('./db')
 const routes = require('./routes/index')
 
 const app = express()
 app.use(bodyParser.json())
 app.use(express.static(__dirname + '/public'))
+app.use(cookieParser())
+require('./middleware/authentication/userAuthentication')
 
 app.set('view engine', 'ejs')
 

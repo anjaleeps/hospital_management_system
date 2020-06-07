@@ -2,6 +2,7 @@ const Session = require('../models/session')
 const Appointment = require('../models/appointment')
 
 exports.getSessions = async function(req, res){
+    console.log(req.user)
     let doctorId = 1
     let session = new Session()
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>Login</title>
+
+    <!-- Favicons -->
+    <link href="/doctor/img/favicon.png" rel="icon">
+    <link href="/doctor/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/doctor/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="/doctor/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="/doctor/css/style.css" rel="stylesheet">
+    <link href="/doctor/css/style-responsive.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div id="login-page">
+        <div class="container">
+            <form class="form-login" action="index.html">
+                <h2 class="form-login-heading">log in now</h2>
+                <div class="login-wrap">
+                    <input type="email" id="email" class="form-control" placeholder="Email Address" autofocus required>
+                    <br>
+                    <input type="password" id="password" minsize=5 maxsize=15 class="form-control" placeholder="Password" required>
+
+                    <button class="btn btn-theme btn-block" id="submitButton" type="submit"><i class="fa fa-lock"></i>
+                        LOG IN</button>
+                    <hr>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="/doctor/lib/jquery/jquery.min.js"></script>
+    <script src="/doctor/lib/bootstrap/js/bootstrap.min.js"></script>
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    <script type="text/javascript" src="/doctor/lib/jquery.backstretch.min.js"></script>
+    <script>
+        $.backstretch("img/login-bg.jpg", {
+            speed: 500
+        });
+    </script>
+    <script src="/js/login.js"></script> 
+</body>
+
+</html>
