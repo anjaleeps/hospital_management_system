@@ -29,10 +29,15 @@ exports.login = async function (req, res) {
 
             let token = jwt.sign(JSON.stringify(payload), process.env.JWT_SECRET)
 
-            res.cookie('jwt', token, { httpOnly: true, secure: false }) //change in production
+            res.cookie('jwt', token, { httpOnly: true, secure: true }) //change in production
             res.status(200).json({ doctorId: doctorData.doctor_id })
 
         })
     })(req, res)
+}
+
+exports.logout = async function(req, res){
+    res.clearCookie('jwt')
+    res.redirect('/doctor/logout')
 }
 

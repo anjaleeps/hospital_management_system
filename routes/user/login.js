@@ -8,4 +8,5 @@ router.get('/', (req, res) => {
 })
 router.post('/', loginValidationRules(), validate, userController.login)
 
+
 module.exports = router
