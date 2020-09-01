@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>Dashio - Bootstrap Admin Template</title>
+
+    <!-- Favicons -->
+    <link href="/doctor/img/favicon.png" rel="icon">
+    <link href="/doctor/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/doctor/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="/doctor/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="/doctor/css/style.css" rel="stylesheet">
+    <link href="/doctor/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="/doctor/css/to-do.css">
+
+</head>
+
+<body>
+
+    <%- include ('../partials/header') %>
+    <%- include ('../partials/sidebar') %>
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row mt mb">
+                
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading wht-bg">
+                            <h4 class="gen-case">
+                                Patient History
+                            </h4>
+                        </header>
+                        <div class="panel-body minimal">
+
+                            <div class="table-inbox-wrap ">
+                                <table class="table table-inbox table-hover">
+                                    <tbody>
+                                        <tr class="unread">
+                                            <td class="inbox-small-cells">PATIENT ID</td>
+                                            <td class="inbox-small-cells"></td>
+                                            <td class="inbox-small-cells"></td>
+                                            <td class="view-message  dont-show">PATIENT NAME</td>
+                                            <td class="view-message  inbox-small-cells">AGE</td>
+                                            <td class="view-message "></td>
+                                            <td class="view-message "></td>
+                                            <td class="view-message">COMPLETED APPOINTMENTS</td>
+                                        </tr>
+                                        <% patients.forEach(patient => { %>
+                                        <tr class="read">
+                                            <td class="inbox-small-cells"><%= patient.patient_id %></td>
+                                            <td class="inbox-small-cells"></td>
+                                            <td class="inbox-small-cells"></td>
+                                            <td class="view-message  dont-show">
+                                                <a href=<%= `/doctor/appointment/${patient.appointment_id}` %>>
+                                                    <%= patient.patient_name %>
+                                                </a>
+                                            </td>
+                                            <td class="view-message  inbox-small-cells"><%= patient.age%>
+                                            </td>
+                                            <td class="view-message "></td>
+                                            <td class="view-message "></td>
+                                            <td class="view-message"><%=patient.total_appointments%></td>
+                                        </tr>
+                                        <% }) %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+            </div>
+        </section>
+        <%- include ('../partials/footer') %>
+</body>
+
+</html>

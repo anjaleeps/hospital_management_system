@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>Dashio - Bootstrap Admin Template</title>
+
+    <!-- Favicons -->
+    <link href="/doctor/img/favicon.png" rel="icon">
+    <link href="/doctor/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/doctor/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="/doctor/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="/doctor/css/style.css" rel="stylesheet">
+    <link href="/doctor/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="/doctor/css/to-do.css">
+
+</head>
+
+<body>
+
+    <%- include ('../partials/header') %>
+    <%- include ('../partials/sidebar') %>
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <h4><i class="fa fa-angle-right"></i> New Diagnosis</h4>
+                    <div class="form-panel">
+                        <div class=" form">
+                            <form class="cmxform form-horizontal style-form" id="commentForm">
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-sm-2 control-label">Appointment ID</label>
+                                    <div class="col-lg-10">
+                                        <p class="form-control-static"><%= appointmentId %></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cdiagnosistypeid" class="control-label col-lg-2">Diagnosis Name</label>
+                                    <div class="col-lg-10">
+                                        <select class="form-control" id="cdiagnosistypeid">
+                                            <% diagnosisTypes.forEach(type => { %>
+                                            <option value=<%= `${type.diagnosis_type_id}` %>><%= type.diagnosis_type%>
+                                            </option>
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="cdrugs" class="control-label col-lg-2">Drug Names</label>
+
+                                    <div class="col-lg-8">
+                                        <select class="form-control" id="cdrugs">
+                                            <% drugs.forEach(drug => { %>
+                                            <option value=<%= `${drug.drug_id}` %>><%= drug.drug_name %></option>
+                                            <% }) %>
+                                        </select>
+                                        <div class="row mt" id="selectedDrugs">
+                                            <template id="temp">
+                                                <div class="col-md-3">
+                                                    <div class="alert alert-warning alert-dismissable"
+                                                        style="padding: 5px; padding-right:35px;">
+                                                        <button type="button closeButton" class="close" data-dismiss="alert"
+                                                            aria-hidden="true">&times;</button>
+                                                        <strong>Warning!</strong>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                    <div class="log-lg-2">
+                                        <button class="btn btn-theme02" id="addButton" type="submit">Add</button>
+                                    </div>
+
+
+                                </div>
+                                <div class="form-group ">
+                                    <label for="ccomment" class="control-label col-lg-2">Special Notes</label>
+                                    <div class="col-lg-10">
+                                        <textarea class="form-control " id="ccomment" name="comment"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <button id="submitButton" class="btn btn-theme" type="submit">Save</button>
+                                        <a href=<%= `/doctor/appointment/${appointmentId}` %> class="btn btn-theme04" >Cancel</a>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="appointmentId" value=<%= `${appointmentId}` %>
+
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /form-panel -->
+                </div>
+                <!-- /col-lg-12 -->
+            </div>
+        </section>
+
+        <%- include ('../partials/footer') %>
+        <script src="/doctor/js/diagnosis.js"></script>
+
+</body>
+
+</html>

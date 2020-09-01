@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>Dashboard</title>
+
+    <!-- Favicons -->
+    <link href="/doctor/img/favicon.png" rel="icon">
+    <link href="/doctor/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/doctor/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="/doctor/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/doctor/css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="/doctor/lib/gritter/css/jquery.gritter.css" />
+    <!-- Custom styles for this template -->
+    <link href="/doctor/css/style.css" rel="stylesheet">
+    <link href="/doctor/css/style-responsive.css" rel="stylesheet">
+    <script src="/doctor/lib/chart-master/Chart.js"></script>
+
+
+</head>
+
+<body>
+
+    <%- include ('partials/header') %>
+    <%- include ('partials/sidebar') %>
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-9 main-chart">
+                    <div class="row mt">
+                        <% sessions.forEach(session => { %>
+                        <div class="col-md-4 col-sm-4 mb">
+                            <div class="darkblue-panel pn">
+                                <div class="darkblue-header">
+                                    <h5><%= `${session.day.toUpperCase()}, ${session.date.toUpperCase()}` %></h5>
+                                </div>
+                                <div style="margin-bottom:20px;">
+                                    <div style="font-size: 27px;">
+                                        <p><%= session.patient_count%></p>
+                                        <p>Patients</p>
+                                    </div>
+                                   
+                                    <a href=<%= `/doctor/appointment?sessionId=${session.session_id}&date=${session.date}` %> class="btn btn-theme"> More Info</a>
+                                </div>
+
+                                <footer>
+                                    <div class="pull-left">
+                                        <h5><%= `From: ${session.start_time}` %></h5>
+                                    </div>
+                                    <div class="pull-right">
+                                        <h5><%= `To: ${session.end_time}` %></h5>
+                                    </div>
+                                </footer>
+                            </div>
+                        </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+
+
+</body>
+
+</html>
